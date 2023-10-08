@@ -25,6 +25,7 @@ export async function POST(request: Request) {
 
     const { problem, description, profileId } = data
 
+
     try {
         const res = await prisma.alert.create({
             data: {
@@ -36,6 +37,9 @@ export async function POST(request: Request) {
 
         return NextResponse.json(res)
     } catch (error: any) {
+
+
+        console.log("error", error)
         return console.error('ERROR_HAS_OCCURED_WHILE_CREATING_ALERT', error)
     }
 

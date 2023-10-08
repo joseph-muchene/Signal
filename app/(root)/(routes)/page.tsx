@@ -19,7 +19,7 @@ export default function Home() {
   const authData = useSWR('/api/auth', fetcher,)
 
 
-  
+  if (authData.data) localStorage.setItem('profile', JSON.stringify(authData.data))
   if (!mounted) return <></>;
   return (
     <div className='mt-16 '>

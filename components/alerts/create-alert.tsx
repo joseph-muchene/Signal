@@ -57,17 +57,19 @@ export default function CreateAlert() {
 
 
 
+
+    console.log('clicked submit')
     async function onSubmit(values: z.infer<typeof formSchema>) {
+
         let profile: any
         profile = localStorage.getItem('profile')
 
         const parseItemOnStorage = JSON.parse(profile)
-        const profileId = parseItemOnStorage.id
+        const profileId = parseItemOnStorage?.id
 
-
+        console.log(profileId)
         const object = { ...values, profileId }
-        const response = await axios.post('/api/alert', object)
-
+        await axios.post('/api/alert', object)
 
         return window.location.reload()
 
